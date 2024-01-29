@@ -24,7 +24,9 @@
   The Docker Engine is the core component of Docker and consists of three parts:
 
    Server:    It is the Docker daemon called dockerd. It can create and manage Docker images, containers, networks, etc.
+   
    REST API:    It is used to instruct the Docker daemon what to do.
+   
    Command Line Interface (CLI):    It is a client that is used to enter Docker commands
   
  
