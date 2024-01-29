@@ -21,13 +21,13 @@
    Containers are standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that 
    code in any environment*
 
-  *The Docker Engine is the core component of Docker and consists of three parts:*
+  The Docker Engine is the core component of Docker and consists of three parts:
 
-   *Server:    It is the Docker daemon called dockerd. It can create and manage Docker images, containers, networks, etc.*
+   Server:    It is the Docker daemon called dockerd. It can create and manage Docker images, containers, networks, etc.
    
-   *REST API:    It is used to instruct the Docker daemon what to do.*
+   REST API:    It is used to instruct the Docker daemon what to do.
    
-   *Command Line Interface (CLI):    It is a client that is used to enter Docker commands*
+   Command Line Interface (CLI):    It is a client that is used to enter Docker commands
   
 *In this setup, we are going to use 2 docker containers , one for our application and another for nginx*
 
