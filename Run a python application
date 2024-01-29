@@ -1,0 +1,21 @@
+The below commands will help you run your python application. Please note that this isn't a web application as we are not hosting this application using any web server.
+
+Login to your ec2-user instance
+# switch as root user
+sudo su
+
+# Install python
+yum install python -y
+python --version
+
+# Create app directory
+cd /
+mkdir app
+
+# Create your python application
+cd app/
+vi app.py
+print("Welcome to my app")
+
+# Run your python application
+python app.py
