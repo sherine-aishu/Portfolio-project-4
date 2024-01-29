@@ -8,22 +8,22 @@
   
   **Why to containerize an application?** 
   
-    *Portability: Containerization enables software developers to deploy applications in multiple environments without rewriting the program code.*
-    *Scalability: Containers are lightweight software components that run efficiently. Therefore, software developers can easily add multiple containers for different 
-                  applications on a single machine.*
-    *Isolation:   Containerization provides isolation between different services/application running within same machine*
+  *Portability: Containerization enables software developers to deploy applications in multiple environments without rewriting the program code.*
+  *Scalability: Containers are lightweight software components that run efficiently. Therefore, software developers can easily add multiple containers for different 
+                applications on a single machine.*
+  *Isolation:   Containerization provides isolation between different services/application running within same machine*
     
   **What is docker and what are its components** 
   
-    *Docker is an open-source platform that enables developers to build, deploy, run, update and manage containers. 
-     Containers are standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that 
-     code in any environment*
+  *Docker is an open-source platform that enables developers to build, deploy, run, update and manage containers. 
+   Containers are standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that 
+   code in any environment*
 
-     *The Docker Engine is the core component of Docker and consists of three parts:
+  *The Docker Engine is the core component of Docker and consists of three parts:
 
-                                  Server:    It is the Docker daemon called dockerd. It can create and manage Docker images, containers, networks, etc.
-                                REST API:    It is used to instruct the Docker daemon what to do.
-            Command Line Interface (CLI):    It is a client that is used to enter Docker commands*
+   Server:    It is the Docker daemon called dockerd. It can create and manage Docker images, containers, networks, etc.
+   REST API:    It is used to instruct the Docker daemon what to do.
+   Command Line Interface (CLI):    It is a client that is used to enter Docker commands*
   
  
 
