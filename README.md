@@ -28,41 +28,45 @@
    REST API:    It is used to instruct the Docker daemon what to do.
    
    Command Line Interface (CLI):    It is a client that is used to enter Docker commands
+
+   **What is WSGI and uWSGI?**
+
+   *WSGI is a protocol that enables communication between web servers and Python applications, while uWSGI is a server that implements the WSGI protocol and runs Python web     applications.We need wsgi (Web Server Gateway Interface) , to host our python app on a web server. We can actually run our python app on web server w/o wsgi also, but       it is not a recommended way. There are several types of WSGI available, we are using uWSGI in this project. uWSGI is suitable for hosting python web application*
   
-*In this setup, we are going to use 2 docker containers , one for our application and another for nginx*
-
-**How it works?**
-
-* Incoming traffic will first reach the host on port 80 where we run 2 containers.
-
-* The traffic will then be forwarded to nginx container using port mapping 80:80 from host to nginx container.
-
-* We need to expose port 80 outside nginx container (Dockerfile).
-
-* The application will run on application container on port 9090.
-
-* By default, all ports will be open for the containers to communicate between each other.
-
-* From nginx the traffic will be forwarded to application container and our clients will be able to access our application.
-
-**STEPS**
-
-Host an python application (without using docker i.e without containerization)
-
-Step 1: Run a python application
-
-Step 2: Host a python web application using uwsgi and its default development web server (passing all parameters in command line)
-
-Step 3: Host a python web application using uwsgi and its default development web server (using an .ini file to mention the parameters)
-
-Step 4: Host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
-
-How to containerize the same python application using docker
-
-Step 5: StepInstall docker
-
-Step 6: Run application container by creating its image using Dockerfile
-
-Step 7: Run nginx container by creating its image using Dockerfile
-
-  
+   *In this setup, we are going to use 2 docker containers , one for our application and another for nginx*
+    
+   **How it works?**
+    
+   * Incoming traffic will first reach the host on port 80 where we run 2 containers.
+    
+   * The traffic will then be forwarded to nginx container using port mapping 80:80 from host to nginx container.
+    
+   * We need to expose port 80 outside nginx container (Dockerfile).
+    
+   * The application will run on application container on port 9090.
+    
+   * By default, all ports will be open for the containers to communicate between each other.
+    
+   * From nginx the traffic will be forwarded to application container and our clients will be able to access our application.
+    
+   **STEPS**
+    
+            Host an python application (without using docker i.e without containerization)
+            
+            Step 1: Run a python application
+            
+            Step 2: Host a python web application using uwsgi and its default development web server (passing all parameters in command line)
+            
+            Step 3: Host a python web application using uwsgi and its default development web server (using an .ini file to mention the parameters)
+            
+            Step 4: Host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
+            
+            How to containerize the same python application using docker
+            
+            Step 5: StepInstall docker
+            
+            Step 6: Run application container by creating its image using Dockerfile
+            
+            Step 7: Run nginx container by creating its image using Dockerfile
+    
+      
