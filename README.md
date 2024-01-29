@@ -7,13 +7,17 @@
   *Containerization enables software developers to build, deploy, and manage applications more efficiently and effectively.*
   
   **Why to containerize an application?** 
+  
     *Portability: Containerization enables software developers to deploy applications in multiple environments without rewriting the program code.*
-    *Scalability: Containers are lightweight software components that run efficiently. Therefore, software developers can easily add multiple containers for different applications on a single machine.*
-    *Isolation: Containerization provides isolation between different services/application running within same machine*
+    *Scalability: Containers are lightweight software components that run efficiently. Therefore, software developers can easily add multiple containers for different 
+                  applications on a single machine.*
+    *Isolation:   Containerization provides isolation between different services/application running within same machine*
     
   **What is docker and what are its components** 
+  
     *Docker is an open-source platform that enables developers to build, deploy, run, update and manage containers. 
-     Containers are standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that code in any environment*
+     Containers are standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that 
+     code in any environment*
 
      *The Docker Engine is the core component of Docker and consists of three parts:
 
