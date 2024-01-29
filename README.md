@@ -29,7 +29,10 @@
    
    *Command Line Interface (CLI):    It is a client that is used to enter Docker commands*
   
- 
+*In this setup, we are going to use 2 docker containers , one for our application and another for nginx*
+
+**How it works?**
+
 
 Step 1: Host an python application 
 
