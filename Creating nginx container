@@ -3,23 +3,10 @@ the host using port mapping.
 
 In existing app container no changes are required, so as of now the app is running in port 9090. Now we need to prefix it with nginx reverse proxy.
 
-Note: Copy the nginx config and place it in /app path, because Dockerfile doesn't have access to file and directories that belong to other folder other than /app
+Note: Copy the nginx config and place it in /app path in your host machine, because Dockerfile doesn't have access to file and directories that belong to other folder other than /app
 
-
-cat app.ini
-[uwsgi]
-module = wsgi:application
-master = true
-processes = 5
-logto = /app/log/uwsgi/apps.log
-http-socket = :9090
-chmod-socket = 660
-vacuum = true
-die-on-term = true
-
-
+# Updating the nginx.conf filw which was copied into /app directory
 nginx.config
-
     include /etc/nginx/conf.d/*.conf;
 
     server {
@@ -36,9 +23,15 @@ nginx.config
     }
 }
 
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myappcontainer
+In above nginx.coonf, 172.17.0.2 is basically the IP of your app container. But how to get that? Use the below command to obtain the same. 
 
-cat myDockerfile
+# Command to get the IP of containers
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' appcnt
+
+# Configure Dockerfile for nginx container
+vi myDockerfile
+********************************************************************************************
+# Use an official nginx image 
 FROM nginx:1.19.2-alpine
 
 # Create necessary directories and files, and set permissions and ownership
@@ -54,21 +47,21 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80
+********************************************************************************************
 
+# Create docker image
+docker build -t nginimg -f myDockerfile .
 
-docker build -t mytag -f nginxDockerfile .
-docker run -d -p 80:80 --name mynginxcontainer --link nginxDockerfile:app mytag
-# docker run -d -p 80:80 --name mynginxcontainer --link myappcontainer:app mynginx
+# Create docker container
+docker run -d -p 80:80 --name ngincnt --link appcnt:app nginimg
+
+                # here, docker run -d -p 80:80 --name mynginxcontainer --link myappcontainer:app nginimg
+                # here, app is the alias created for myappcontainer so mynginxcontainer can communicate with myappcontainer.
 docker ps
 
+                # we need not to map port 9090 of nginx container to app container, because by default all the ports will be opened 
+                  between the containers within the host. Hence, the traffic from host on port 80 will be forwarded to nginx container 
+                  on port 80 which will then reach app container on port 9090, thereby the clients can access our application.
 
-we need not to map the port 9090 in app creation
-
-
-
-
-
-
-
-
-
+# Access your app from browser
+http://publicIP:80
