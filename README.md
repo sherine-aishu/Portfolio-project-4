@@ -59,19 +59,21 @@
             Host an python application (without using docker i.e without containerization)
             
                 Step 1: Run a python application
+
+                Step 2: Install uWSGI
                 
-                Step 2: Host a python web application using uwsgi and its default development web server (passing all parameters in command line)
+                Step 3: Host a python web application using uwsgi and its default development web server (passing all parameters in command line)
                 
-                Step 3: Host a python web application using uwsgi and its default development web server (using an .ini file to mention the parameters)
+                Step 4: Host a python web application using uwsgi and its default development web server (using an .ini file to mention the parameters)
                 
-                Step 4: Host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
+                Step 5: Host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
                 
             How to containerize the same python application using docker
             
-                Step 5: StepInstall docker
+                Step 6: StepInstall docker
                 
-                Step 6: Run application container by creating its image using Dockerfile
+                Step 7: Run application container by creating its image using Dockerfile
                 
-                Step 7: Run nginx container by creating its image using Dockerfile
+                Step 8: Run nginx container by creating its image using Dockerfile
         
           
