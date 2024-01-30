@@ -32,7 +32,7 @@
    **What is WSGI and uWSGI?**
 
    *WSGI is a protocol that enables communication between web servers and applications, while uWSGI is a server that implements the WSGI protocol and runs Python web     
-    applications. We need wsgi (Web Server Gateway Interface), to host our app on a web server. We can actually run our python app on web server w/o wsgi also, but       it 
+    applications. We need wsgi (Web Server Gateway Interface), to host our app on a web server. We can actually run our python app on web server w/o wsgi also, but it 
     is not a recommended way. There are several types of WSGI available, we are using uWSGI in this project. uWSGI is suitable for hosting python web application*
   
    *In this setup, we are going to use 2 docker containers , one for our application and another for nginx*
