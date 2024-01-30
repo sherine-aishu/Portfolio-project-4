@@ -1,5 +1,8 @@
 This documentation explains how to host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
 
+# wsgi.py
+No changes in wsgi.py is required
+
 # Configure app.ini
 app.ini
 [uwsgi]
