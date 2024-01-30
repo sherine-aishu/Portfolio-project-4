@@ -44,6 +44,9 @@
    * We need to expose port 80 outside nginx container (Dockerfile).
     
    * The application will run on application container on port 9090.
+
+   * We will expose port 9090 outside the application container but we will not port map it with host port 9090. (Reason: Application container need not to be exposed       
+     outside as we have nginx container to serve the incoming requests. )
     
    * By default, all ports will be open for the containers to communicate between each other.
     
