@@ -1,0 +1,65 @@
+This documentation explains how to run application container by creating its image using Dockerfile. Here, we are going to run our app on port 9090 in this container and it is
+going to communicate with the nginx container on same host.
+
+# wsgi.py
+No changes in wsgi.py is required
+
+# Updating the app.ini file in host
+app.ini (instead of using sock use port)
+[uwsgi]
+module = wsgi:application
+master = true
+processes = 5
+logto = /app/log/uwsgi/apps.log
+http-socket = :9090
+chmod-socket = 660
+vacuum = true
+die-on-term = true
+
+# Configure Dockerfile
+vi Dockerfile
+********************************************************************************************
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim-buster
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Add the rest of the code
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN apt-get update && \
+    apt-get install -y gcc && \
+    pip install wheel && \
+    pip install --upgrade setuptools pip && \
+    pip install uwsgi
+
+# Create /app/log/uwsgi/apps.log
+RUN mkdir -p /app/log/uwsgi && touch /app/log/uwsgi/apps.log
+
+# Make port 9090 available to the world outside this container
+EXPOSE 9090
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["uwsgi", "--ini", "app.ini"]
+********************************************************************************************
+
+# Create docker image
+docker build -t appimg .
+docker image ls
+
+# Create docker container
+docker run -d --name appcnt appimg
+docker ps
+docker ps -a
+
+Note:
+docker logs appcnt (For troubleshooting , we can view the logs of container)
+docker rm cntdid
+docker rmi imageid
+docker run -d -p 9090:9090 --name appcnt appimg (this command is not required, as we are not exposing our container outside host)
+
