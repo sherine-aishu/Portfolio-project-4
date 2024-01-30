@@ -1,8 +1,0 @@
-The below documentation will explain how to host a python web application using uwsgi and its default development web server (passing all parameters in command line)
-
-Let's first understand why we need WSGI. WSGI (Web Server Gateway Interface) is a protocol which is used to host/run an application on a web server which makes it a 
-web application.
-
-WSGI provides a common API that allows web server and application framework to interact with each other. In simple terms, WSGI is a protocol that enables communication
-between a web server and an application or framework. It forwards requests from a web server to a backend web application or framework, and then passes the responses 
-back to the web server to reply to the requestor.

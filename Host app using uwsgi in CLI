@@ -1,0 +1,11 @@
+The following documentation explains how to host a Python web application using uWSGI and its default development web server (passing all parameters in the command line). 
+We will be hosting a Python application using uWSGI.
+
+First, let’s understand why we need WSGI. WSGI (Web Server Gateway Interface) is a protocol used to host/run an application on a web server, which makes it a web application. 
+WSGI provides a common API that allows web servers and application frameworks to interact with each other. In simple terms, WSGI is a protocol that enables communication between
+a web server and an application or framework. It forwards requests from a web server to a backend web application or framework, and then passes the responses back to the web 
+server to reply to the requestor.
+
+We don’t have a web server installed because uWSGI has a default development web server that will be used to host the Python web application. As we know, the web server can be 
+accessed by our clients in a browser by hitting http://publicIP:port. Here, the port number and other details are passed as parameters in the CLI while starting our application 
+using uWSGI.
