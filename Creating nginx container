@@ -23,7 +23,7 @@ nginx.config
     }
 }
 
-In above nginx.coonf, 172.17.0.2 is basically the IP of your app container. But how to get that? Use the below command to obtain the same. 
+In above nginx.conf, 172.17.0.2 is basically the IP of your app container. But how to get that? Use the below command to obtain the same. 
 
 # Command to get the IP of containers
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' appcnt
