@@ -13,7 +13,7 @@
   *Scalability: Containers are lightweight software components that run efficiently. Therefore, software developers can easily add multiple containers for different 
                 applications on a single machine.*
                 
-  *Isolation:   Containerization provides isolation between different services/application running within same machine*
+  *Isolation:   Containerization provides isolation between different services/application running within same machine.*
     
   **What is docker and what are its components** 
   
