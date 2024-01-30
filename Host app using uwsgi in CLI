@@ -9,3 +9,25 @@ server to reply to the requestor.
 We don’t have a web server installed because uWSGI has a default development web server that will be used to host the Python web application. As we know, the web server can be 
 accessed by our clients in a browser by hitting http://publicIP:port. Here, the port number and other details are passed as parameters in the CLI while starting our application 
 using uWSGI.
+
+# Create python application
+uwsgi.py
+def application(env, start_response):
+    start_response('200 OK', [('Content-Type','text/html')])
+    return [b"welcome to my app"]
+
+# Install firewall 
+yum install firewalld -y
+systemctl status firewalld.service
+systemctl start firewalld.service
+systemctl enable firewalld.service
+
+# Allow port for accessing our app from browser
+sudo firewall-cmd --permanent --add-port=9090/tcp
+sudo firewall-cmd --reload
+
+# Start your app
+uwsgi --http :9090 --wsgi-file wsgi.py
+
+# Access your app from browser
+http://publicIP:9090
