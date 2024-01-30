@@ -48,7 +48,7 @@
 
    * We will expose port 9090 outside the application container but we will not port map it with host port 9090. (Reason: Application container need not to be exposed outside as we have nginx container to serve the incoming requests. )
     
-   * By default, all ports will be open for the containers to communicate between each other.
+   * By default, all ports will be open for the containers to communicate between each other within the same host.
     
    * From nginx the traffic will be forwarded to application container and our clients will be able to access our application.
     
