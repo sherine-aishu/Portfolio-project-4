@@ -1,0 +1,16 @@
+This documentation will explain how to install uWSGI
+
+# Install pip
+yum install pip
+
+# Install wheel
+pip install wheel
+
+# Install group of development tools 
+sudo yum groupinstall 'Development Tools'
+
+# Install development headers and libraries required to build Python 3 modules 
+sudo yum install python3-devel
+
+# Install uwsgi
+pip install uwsgi
