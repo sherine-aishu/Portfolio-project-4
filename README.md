@@ -70,7 +70,7 @@
                 
             How to containerize the same python application using docker
             
-                Step 6: StepInstall docker
+                Step 6: Install docker
                 
                 Step 7: Run application container by creating its image using Dockerfile
                 
