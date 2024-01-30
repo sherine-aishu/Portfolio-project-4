@@ -1,9 +1,9 @@
 # Portfolio-project-4
-*Containerizing python application using docker*
+*Containerizing python application using Docker*
 
 **What is Containerization?**
   
-  *Containerization is a software deployment process that bundles an application’s code with all the files and libraries it needs to run on any infrastructure.*
+  *Containerization is a software deployment process that bundles application’s code with all the files and libraries it needs to run on any infrastructure.*
   *Containerization enables software developers to build, deploy, and manage applications more efficiently and effectively.*
   
   **Why to containerize an application?** 
