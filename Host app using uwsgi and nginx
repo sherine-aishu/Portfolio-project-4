@@ -1,0 +1,60 @@
+This documentation explains how to host a python web application using uwsgi and nginx as web server which acts as reverse proxy (.sock and .ini file)
+
+# Configure app.ini
+app.ini
+[uwsgi]
+module = wsgi:application
+master = true
+processes = 5
+logto = /var/log/uwsgi/sock.log
+socket = /app/app.sock
+chmod-socket = 666
+vacuum = true
+die-on-term = true
+
+# Install nginx
+yum install nginx -y
+systemctl status nginx
+systemctl start nginx
+systemctl enable nginx
+
+# Configure nginx.conf file
+cd /etc/nginx/
+cp nginx.conf nginx.conf_bck
+vi nginx.conf
+server {
+    listen 80;
+    server_name public_IP_server;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/app/app.sock;
+    }
+}
+
+# Restarting nginx and checking syntax
+systemctl restart nginx
+sudo nginx -t
+
+# Allow port 80 for incoming trafic to access app
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --reload
+
+# Creating app.sock file and providing relevant permissions
+cd /app/
+touch app.sock
+cd /
+chmod 777 app
+chmod -R 777 app/
+chown nginx:nginx app
+chown -R nginx:nginx app/
+
+# Start your app
+uwsgi --ini app.ini
+
+# Access your app from browser
+http://publicIP:80
+
+Note: The app.sock file is a Unix socket file used for inter-process communication. It allows Nginx and uWSGI to communicate on the same system without using a network 
+protocol, which can improve performance. The uWSGI server writes responses to this socket, and Nginx reads from it to get the response data to send back to the client. 
+This setup is commonly used when deploying Python web applications.
