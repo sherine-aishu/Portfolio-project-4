@@ -1,0 +1,74 @@
+This documentation explains how to run nginx container by creating its image using Dockerfile. Here, we are going to run nginx on port 80 in this container and expose it outside
+the host using port mapping. 
+
+In existing app container no changes are required, so as of now the app is running in port 9090. Now we need to prefix it with nginx reverse proxy.
+
+Note: Copy the nginx config and place it in /app path, because Dockerfile doesn't have access to file and directories that belong to other folder other than /app
+
+
+cat app.ini
+[uwsgi]
+module = wsgi:application
+master = true
+processes = 5
+logto = /app/log/uwsgi/apps.log
+http-socket = :9090
+chmod-socket = 660
+vacuum = true
+die-on-term = true
+
+
+nginx.config
+
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+    listen       80;
+    listen       [::]:80;
+    server_name  Public_IP_server;
+
+    location / {
+        proxy_pass http://172.17.0.2:9090;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' myappcontainer
+
+cat myDockerfile
+FROM nginx:1.19.2-alpine
+
+# Create necessary directories and files, and set permissions and ownership
+RUN mkdir -p /app/log/uwsgi && \
+    touch /app/app.sock && \
+    touch /app/log/uwsgi/sock.log && \
+    chmod 777 /app && \
+    chmod -R 777 /app/ && \
+    chown -R nginx:nginx /app
+
+# Copy Nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80
+EXPOSE 80
+
+
+docker build -t mytag -f nginxDockerfile .
+docker run -d -p 80:80 --name mynginxcontainer --link nginxDockerfile:app mytag
+# docker run -d -p 80:80 --name mynginxcontainer --link myappcontainer:app mynginx
+docker ps
+
+
+we need not to map the port 9090 in app creation
+
+
+
+
+
+
+
+
+
