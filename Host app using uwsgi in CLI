@@ -11,7 +11,7 @@ accessed by our clients in a browser by hitting http://publicIP:port. Here, the 
 using uWSGI.
 
 # Create python application
-uwsgi.py
+wsgi.py
 def application(env, start_response):
     start_response('200 OK', [('Content-Type','text/html')])
     return [b"welcome to my app"]
