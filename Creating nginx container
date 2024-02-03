@@ -5,7 +5,7 @@ In existing app container no changes are required, so as of now the app is runni
 
 Note: Copy the nginx config and place it in /app path in your host machine, because Dockerfile doesn't have access to file and directories that belong to other folder other than /app
 
-# Updating the nginx.conf filw which was copied into /app directory
+# Updating the nginx.conf file which was copied into /app directory
 nginx.config
     include /etc/nginx/conf.d/*.conf;
 
