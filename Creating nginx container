@@ -65,3 +65,8 @@ docker ps
 
 # Access your app from browser
 http://publicIP:80
+
+
+Note:
+If you receive error as "Error response from daemon: driver failed programming external connectivity on endpoint ngincnt  Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use."
+check whether port 80 in host is already being used by lsof -i :80, if yes then stop that service or kill that process.
