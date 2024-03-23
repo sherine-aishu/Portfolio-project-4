@@ -62,4 +62,10 @@ docker logs appcnt (For troubleshooting , we can view the logs of container)
 docker rm cntdid
 docker rmi imageid
 docker run -d -p 9090:9090 --name appcnt appimg (this command is not required, as we are not exposing our container outside host)
-
+Why to expose your application container?
+    The reason we are exposing our application container is to verfiy whether our application is working fine within the host. 
+    Since we haven't mapped any host port to container port that is exposed, no worries that the application is open to internet, its not.
+How to verify whether our application container is working fine?
+Be in your host machine:
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' appcnt
+curl http://cntIP:9090
