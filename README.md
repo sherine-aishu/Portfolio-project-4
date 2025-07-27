@@ -60,7 +60,7 @@
 
                 Step 2: Install uWSGI
                 
-                Step 3: Host a python web application using uwsgi and its default development web server (passing all parameters in command line)
+                Step 3: Host a python web application using uwsgi and its own built-in HTTP server(passing all parameters in command line)
                 
                 Step 4: Host a python web application using uwsgi and its default development web server (using an .ini file to mention the parameters)
                 
