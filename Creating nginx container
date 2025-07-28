@@ -59,7 +59,7 @@ docker run -d -p 80:80 --name ngincnt --link appcnt:app nginimg
                 # here, app is the alias created for myappcontainer so mynginxcontainer can communicate with myappcontainer.
 docker ps
 
-                # we need not to map port 9090 of nginx container to app container, because by default all the ports will be opened 
+                # we need not to map port 9090 of app container to nginx container, because by default all the ports will be opened 
                   between the containers within the host. Hence, the traffic from host on port 80 will be forwarded to nginx container 
                   on port 80 which will then reach app container on port 9090, thereby the clients can access our application.
 
@@ -70,3 +70,7 @@ http://publicIP:80
 Note:
 If you receive error as "Error response from daemon: driver failed programming external connectivity on endpoint ngincnt  Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use."
 check whether port 80 in host is already being used by lsof -i :80, if yes then stop that service or kill that process.
+
+You can connect two containers using link and w/o alias (app), in that case your command would look like docker run -d -p 80:80 --name mynginxcontainer --link myappcontainer nginimg
+Here nginx container will refer the application container using its name and not by its alias.
+
