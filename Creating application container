@@ -38,7 +38,7 @@ RUN apt-get update && \
 # Create /app/log/uwsgi/apps.log
 RUN mkdir -p /app/log/uwsgi && touch /app/log/uwsgi/apps.log
 
-# Make port 9090 available to the world outside this container
+# Application listens to this port inside the container  
 EXPOSE 9090
 
 # Define environment variable
