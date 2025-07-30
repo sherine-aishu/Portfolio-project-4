@@ -26,6 +26,9 @@ systemctl enable firewalld.service
 sudo firewall-cmd --permanent --add-port=9090/tcp
 sudo firewall-cmd --reload
 
+# To find the binary path of uwsgi
+find /usr/local -name uwsgi -type f 2>/dev/null
+
 # Start your app
 uwsgi --http :9090 --wsgi-file wsgi.py
 
