@@ -26,6 +26,9 @@ systemctl enable firewalld.service
 sudo firewall-cmd --permanent --add-port=9090/tcp
 sudo firewall-cmd --reload
 
+# Allowing the ports at server level to access python application over internet 
+Inbound open port 9090 from Any IPv4 
+
 # To find the binary path of uwsgi
 find /usr/local -name uwsgi -type f 2>/dev/null
 
