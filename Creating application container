@@ -20,10 +20,7 @@ die-on-term = true
 vi Dockerfile
 ********************************************************************************************
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim-buster
-
-# Set the working directory in the container to /app
-WORKDIR /app
+FROM python:3.10-slim
 
 # Add the rest of the code
 COPY . /app
@@ -40,9 +37,6 @@ RUN mkdir -p /app/log/uwsgi && touch /app/log/uwsgi/apps.log
 
 # Application listens to this port inside the container  
 EXPOSE 9090
-
-# Define environment variable
-ENV NAME World
 
 # Run app.py when the container launches
 CMD ["uwsgi", "--ini", "app.ini"]
